@@ -45,6 +45,7 @@ class Administrador(models.Model):
 
 
 class Gestor(models.Model):
+    persona = models.ForeignKey(Persona)
     password = models.CharField(max_length=30)
     rol = models.CharField(max_length=30)
     data_inici_contracte = models.DateField()
@@ -67,6 +68,7 @@ class Event(models.Model):
 
 
 class Usuari(models.Model):
+    persona = models.ForeignKey(Persona)
     password = models.CharField(max_length=30)
     rol = models.CharField(max_length=30)
     actiu = models.BooleanField(default=False)
@@ -74,6 +76,7 @@ class Usuari(models.Model):
 
 
 class Ponent(models.Model):
+    persona = models.ForeignKey(Persona)
     password = models.CharField(max_length=30)
     rol = models.CharField(max_length=30)
     salari = models.FloatField(default=0)
