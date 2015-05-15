@@ -1,1 +1,1 @@
-Project for learn and testing django.
+Project for learning and testing django.
