@@ -5,4 +5,9 @@
     {{ form.as_p }}
     <input type="submit" value="Enviar"/>
   </form>
+  <div id="tematica_results">
+      {% for res in tematica_res %}
+        {{ res.desc_tematica }}</br>
+      {% endfor %}
+  </div>
 {% endblock %}
