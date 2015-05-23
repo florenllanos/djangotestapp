@@ -2,12 +2,50 @@
 {% block title %}Crear tematica{% endblock %}
 {% block content %}
   <form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Enviar"/>
+    <div id="form">
+        {{ form.as_p }}
+        <input type="submit" value="Enviar"/>
+    </div>
+    <br/>
+    <div id="tematica_results" class="result">
+        <div class="table">
+            <div class="title">
+                <p>Titulo de tabla</p>
+            </div>
+            <div class="header">
+                <div class="cell">
+                    <p>Id</p>
+                </div>
+                <div class="cell">
+                    <p>Descripcion</p>
+                </div>
+            </div>
+            <div class="row">
+                {% for res in tematica_res %}
+                    <div class="cell">
+                        {{ res.id }}
+                    </div>
+                    <div class="cell">
+                        {{ res.desc_tematica }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="pagination">
+              <span class="step-links">
+                  {% if tematica_res.has_previous %}
+                      <a href="?pagina={{ tematica_res.previous_page_number }}">previous</a>
+                  {% endif %}
+
+                  <span class="current">
+                      Page {{ tematica_res.number }} of {{ tematica_res.paginator.num_pages }}.
+                  </span>
+
+                  {% if tematica_res.has_next %}
+                      <a href="?pagina={{ tematica_res.next_page_number }}">next</a>
+                  {% endif %}
+              </span>
+          </div>
+        </div>
+    </div>
   </form>
-  <div id="tematica_results">
-      {% for res in tematica_res %}
-        {{ res.desc_tematica }}</br>
-      {% endfor %}
-  </div>
 {% endblock %}
