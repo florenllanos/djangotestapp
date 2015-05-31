@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% block title %}Crear tematica{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Crear tematica" %}{% endblock %}
 {% block content %}
   <form action="" method="post">{% csrf_token %}
     <div id="form">
@@ -10,14 +11,14 @@
     <div id="tematica_results" class="result">
         <div class="table">
             <div class="title">
-                <p>Titulo de tabla</p>
+                <p>{% trans "Titulo de tabla" %}</p>
             </div>
             <div class="header">
                 <div class="cell">
-                    <p>Id</p>
+                    <p>{% trans "Id" %}</p>
                 </div>
                 <div class="cell">
-                    <p>Descripcion</p>
+                    <p>{% trans "Descripcion" %}</p>
                 </div>
             </div>
             <div class="row">
@@ -33,15 +34,15 @@
             <div class="pagination">
               <span class="step-links">
                   {% if tematica_res.has_previous %}
-                      <a href="?pagina={{ tematica_res.previous_page_number }}">previous</a>
+                      <a href="?pagina={{ tematica_res.previous_page_number }}">{% trans "Previo" %}</a>
                   {% endif %}
 
                   <span class="current">
-                      Page {{ tematica_res.number }} of {{ tematica_res.paginator.num_pages }}.
+                    {% trans "Pagina" %} {{ tematica_res.number }} {% trans "de" %} {{ tematica_res.paginator.num_pages }}.
                   </span>
 
                   {% if tematica_res.has_next %}
-                      <a href="?pagina={{ tematica_res.next_page_number }}">next</a>
+                      <a href="?pagina={{ tematica_res.next_page_number }}">{% trans "Siguiente" %}</a>
                   {% endif %}
               </span>
           </div>
