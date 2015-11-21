@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}{% trans "Crear tematica" %}{% endblock %}
+{% block title %}{% trans "Crear temática" %}{% endblock %}
 {% block content %}
-  <form action="" method="post">{% csrf_token %}
+<!-- TODO: Formateo de form -->
+<form class="navbar-form" role="search" action="" method="post">{% csrf_token %}
     <div id="form">
         {{ form.as_p }}
         <input type="submit" value="Enviar"/>
