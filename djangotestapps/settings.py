@@ -22,7 +22,8 @@ SECRET_KEY = '*a$#0nq#t)lzn(1$w&bp3p6de7y54l(*yk@vb#0ryca0k-3#&c'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+# DEPRECATED DJANGO 1.9
+#TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -90,7 +91,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Anyadido para que optimice el i18n
+# Anyadido para que optimice el i18n DEPRECATED 1.9
 # TEMPLATE_CONTEXT_PROCESSORS = ("django.core.context_processors.i18n")
 
 # Static files (CSS, JavaScript, Images)
@@ -98,10 +99,32 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# DEPRECATED DJANGO 1.9
 # Templeate dir
-TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, '/gesevent/templates'),  # gesevent templates
-)
+#TEMPLATE_DIRS = (
+#    os.path.join(BASE_DIR, '/gesevent/templates'),  # gesevent templates
+#)
+
+TEMPLATES = [ 
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(BASE_DIR, '/gesevent/templates'),  # gesevent templates
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                "django.contrib.auth.context_processors.auth",
+                "django.template.context_processors.debug",
+                "django.template.context_processors.i18n",
+                "django.template.context_processors.media",
+                "django.template.context_processors.static",
+                "django.template.context_processors.tz",
+                "django.contrib.messages.context_processors.messages"
+            ],
+        },
+    },
+]
 
 # Locale para la aplicacion gesevent
 LOCALE_PATHS = (
